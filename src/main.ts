@@ -20,20 +20,15 @@ async function bootstrap() {
     );
     // app.useGlobalInterceptors(new LoggingInterceptor());
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-call
     const config = new DocumentBuilder()
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         .setTitle('API example')
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         .setDescription('Uploader API')
         .setVersion('1.0')
         .addTag('Uploader')
         .addBearerAuth()
         .build();
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-call
     const document = SwaggerModule.createDocument(app, config);
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
     SwaggerModule.setup('docs/api', app, document);
     await app.listen(process.env.PORT ?? 3000);
     console.log(`Application is running on: ${await app.getUrl()}`);
